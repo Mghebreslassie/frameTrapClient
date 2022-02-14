@@ -1,7 +1,5 @@
 import type { NextPage } from "next";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
-import anji from "../../server/data/scrapedData/Anji_Mito.json";
 import CharacterInfo from "../components/CharacterInfo";
 import CharacterNavBar from "../components/CharacterNavBar";
 import FrameDataTable from "../components/FrameDataTable";

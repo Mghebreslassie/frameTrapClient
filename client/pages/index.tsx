@@ -1,6 +1,4 @@
 import styled from "styled-components";
-import CharacterInfo from "../components/CharacterInfo";
-import CharacterNavBar from "../components/CharacterNavBar";
 import BasicLayout from "../layout/Basic";
 const Title = styled.h1`
   color: red;

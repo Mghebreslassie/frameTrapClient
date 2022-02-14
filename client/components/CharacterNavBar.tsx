@@ -26,7 +26,7 @@ const CharacterNavBar: NextPage = () => {
   useEffect(() => {
     const getImages = async () => {
       const res = await fetch(
-        "http://localhost:3000/character/getAllCharacters"
+        "https://intense-tor-66882.herokuapp.com/character/getAllCharacters"
       );
       const data: AllChars = await res.json();
       setImages(

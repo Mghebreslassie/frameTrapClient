@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import Image from "next/image";
 import { NextPage } from "next";
-
+import path from "path";
 const Container = styled.div`
   width: 100vw;
   border: 5px solid black;
@@ -98,11 +98,20 @@ const CharacterInfo: NextPage<IProps> = ({
       return el;
     });
   }
+  console.log(name?.split(" ")?.join("")?.toLowerCase());
   populateDetails(details);
   return (
     <Container>
       <ImageContainer>
-        <img src={portraitUrl} width={280} height={200} alt={name} />
+        <Image
+          src={`/GGStrivePortrait/${name
+            ?.split(" ")
+            ?.join("")
+            ?.toLowerCase()}_portrait.png`}
+          width={280}
+          height={200}
+          alt={name}
+        />
       </ImageContainer>
       <CharacterBio>
         <Title>{name}</Title>

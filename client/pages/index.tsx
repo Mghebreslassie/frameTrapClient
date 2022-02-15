@@ -39,7 +39,7 @@ const Home = () => {
             overflow: "hidden",
           }}
         >
-          {/* <Link href="/6209bcc995cd20d27493d6df">
+          <Link href="/6209bcc995cd20d27493d6df">
             <a>
               <h1
                 style={{
@@ -56,7 +56,7 @@ const Home = () => {
                 <source src="/assets/GGGiovanna.mp4" type="video/mp4" />
               </video>
             </a>
-          </Link> */}
+          </Link>
         </div>
         <div
           style={{

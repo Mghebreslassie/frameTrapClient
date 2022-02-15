@@ -40,11 +40,18 @@ const CharacterNavBar: NextPage = () => {
         data.allChars.map((item) => {
           return (
             <CharacterBox key={item._id}>
-              <a href={`/${item._id}`}>
-                <div>
-                  <img width={50} height={50} src={item.avatarImageUrl} />
-                </div>
-              </a>
+              <Link href={`/${item._id}`}>
+                <a>
+                  <div>
+                    <Image
+                      width={50}
+                      height={50}
+                      src={item.avatarImageUrl}
+                      alt={item.name}
+                    />
+                  </div>
+                </a>
+              </Link>
             </CharacterBox>
           );
         })

@@ -53,12 +53,23 @@ const Character: NextPage<IProps> = ({ data }) => {
   );
 };
 
-export async function getStaticPaths() {
+export async function getStaticPaths(context: any) {
   // Call an external API endpoint to get posts
+  // let uaString = context.req.headers["user-agent"];
   const res = await fetch(
-    "https://intense-tor-66882.herokuapp.com/character/getAllCharacters"
+    "https://intense-tor-66882.herokuapp.com/character/getAllCharacters",
+    {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        "User-Agent": "*",
+      },
+    }
   );
+
   const posts: { allChars: [Post] } = await res.json();
+  posts.allChars.forEach((i) => console.log(i.name));
 
   // Get the paths we want to pre-render based on posts
   const paths = posts.allChars.map((post) => ({
@@ -72,7 +83,15 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }: any) {
   const res = await fetch(
-    `https://intense-tor-66882.herokuapp.com/character/getCharacter/${params.id}`
+    `https://intense-tor-66882.herokuapp.com/character/getCharacter/${params.id}`,
+    {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        "User-Agent": "*",
+      },
+    }
   );
   const data = await res.json();
 

@@ -26,14 +26,22 @@ const CharacterNavBar: NextPage = () => {
   useEffect(() => {
     const getImages = async () => {
       const res = await fetch(
-        "https://intense-tor-66882.herokuapp.com/character/getAllCharacters"
+        "https://intense-tor-66882.herokuapp.com/character/getAllCharacters",
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+            "User-Agent": "*",
+          },
+        }
       );
       const data: AllChars = await res.json();
       setImages(
         data.allChars.map((item) => {
           return (
             <CharacterBox key={item._id}>
-              <a href={`http://localhost:3001/${item._id}`}>
+              <a href={`/${item._id}`}>
                 <div>
                   <Image width={50} height={50} src={item.avatarImageUrl} />
                 </div>

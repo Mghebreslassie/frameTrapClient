@@ -1,4 +1,5 @@
 import type { NextPage } from "next";
+import Link from "next/link";
 import CharacterInfo from "../components/CharacterInfo";
 import CharacterNavBar from "../components/CharacterNavBar";
 import FrameDataTable from "../components/FrameDataTable";
@@ -38,7 +39,14 @@ type IProps = {
 const Character: NextPage<IProps> = ({ data }) => {
   return (
     <BasicLayout>
-      <CharacterNavBar />
+      {/* <CharacterNavBar /> */}
+      <div>
+        <h3>
+          <Link href="/">
+            <div>Go Back</div>
+          </Link>
+        </h3>
+      </div>
       <CharacterInfo
         name={data.newChar.name}
         bio={data.newChar.bio}

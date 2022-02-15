@@ -1,11 +1,16 @@
+import { NextPage } from "next";
 import Link from "next/link";
 import styled from "styled-components";
 import BasicLayout from "../layout/Basic";
+import { Post } from "./[id]";
+
 const Title = styled.h1`
   color: red;
 `;
-
-const Home = () => {
+type IProps = {
+  data: { allChars: Post[] };
+};
+const Home: NextPage<IProps> = ({ data }) => {
   return (
     <BasicLayout>
       <div
@@ -24,9 +29,19 @@ const Home = () => {
             width: "100vw",
             height: "10%",
             background: "black",
+            display: "flex",
           }}
         >
-          <h2 style={{ textAlign: "left", color: "white" }}>Guilty Gear</h2>
+          <h2 style={{ textAlign: "left", color: "white", flex: 1 }}>
+            Guilty Gear
+          </h2>
+          <span
+            style={{ float: "right", color: "white", display: "flex", flex: 5 }}
+          >
+            {data.allChars.map((item) => {
+              return <h5>{item.name}</h5>;
+            })}
+          </span>
         </div>
         <div
           style={{
@@ -39,24 +54,11 @@ const Home = () => {
             overflow: "hidden",
           }}
         >
-          <Link href="/6209bcc995cd20d27493d6df">
-            <a>
-              <h1
-                style={{
-                  position: "absolute",
-                  zIndex: "10",
-                  top: "30%",
-                  left: "13%",
-                  fontSize: "5rem",
-                }}
-              >
-                Click video to enter
-              </h1>
-              <video autoPlay muted loop>
-                <source src="/assets/GGGiovanna.mp4" type="video/mp4" />
-              </video>
-            </a>
-          </Link>
+          <div>
+            <video autoPlay muted>
+              <source src="./assets/GGGiovanna.mp4"></source>
+            </video>
+          </div>
         </div>
         <div
           style={{
@@ -65,13 +67,49 @@ const Home = () => {
             width: "100vw",
             height: "10%",
             background: "black",
+            display: "flex",
           }}
         >
-          <h2 style={{ textAlign: "right", color: "white" }}>Frame Data</h2>
+          <span
+            style={{ float: "left", color: "white", display: "flex", flex: 5 }}
+          >
+            {data.allChars.map((item) => {
+              return (
+                <Link href={`/${item._id}`}>
+                  <div>
+                    <h5>{item.name}</h5>;
+                  </div>
+                </Link>
+              );
+            })}
+          </span>
+          <h2 style={{ textAlign: "right", color: "white", flex: 1 }}>
+            Frame Data
+          </h2>
         </div>
       </div>
     </BasicLayout>
   );
 };
 
+export async function getStaticProps() {
+  const res = await fetch(
+    "https://frame-tool-gg.herokuapp.com/character/getAllCharacters",
+    {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        "User-Agent": "*",
+      },
+    }
+  );
+  const data = await res.json();
+
+  return {
+    props: {
+      data,
+    },
+  };
+}
 export default Home;

@@ -36,10 +36,23 @@ const Home: NextPage<IProps> = ({ data }) => {
             Guilty Gear
           </h2>
           <span
-            style={{ float: "right", color: "white", display: "flex", flex: 5 }}
+            style={{
+              float: "right",
+              color: "white",
+              display: "flex",
+              flex: 5,
+              justifyContent: "space-around",
+              cursor: "pointer",
+            }}
           >
             {data.allChars.map((item) => {
-              return <h5>{item.name}</h5>;
+              return (
+                <Link href={`/${item._id}`} key={item._id}>
+                  <div>
+                    <h5>{item.name?.split(" ")[0]}</h5>
+                  </div>
+                </Link>
+              );
             })}
           </span>
         </div>
@@ -71,13 +84,20 @@ const Home: NextPage<IProps> = ({ data }) => {
           }}
         >
           <span
-            style={{ float: "left", color: "white", display: "flex", flex: 5 }}
+            style={{
+              float: "left",
+              color: "white",
+              display: "flex",
+              flex: 5,
+              justifyContent: "space-around",
+              cursor: "pointer",
+            }}
           >
             {data.allChars.map((item) => {
               return (
-                <Link href={`/${item._id}`}>
+                <Link href={`/${item._id}`} key={item._id}>
                   <div>
-                    <h5>{item.name}</h5>;
+                    <h5>{item.name?.split(" ")[0]}</h5>;
                   </div>
                 </Link>
               );

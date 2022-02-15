@@ -20,13 +20,12 @@ const CharacterBox = styled.div`
 type AllChars = {
   allChars: Post[];
 };
-
 const CharacterNavBar: NextPage = () => {
   const [images, setImages] = useState<any>();
   useEffect(() => {
     const getImages = async () => {
       const res = await fetch(
-        "https://intense-tor-66882.herokuapp.com/character/getAllCharacters",
+        "https://frame-tool-gg.herokuapp.com/character/getAllCharacters",
         {
           method: "GET",
           headers: {
@@ -43,7 +42,7 @@ const CharacterNavBar: NextPage = () => {
             <CharacterBox key={item._id}>
               <a href={`/${item._id}`}>
                 <div>
-                  <Image width={50} height={50} src={item.avatarImageUrl} />
+                  <img width={50} height={50} src={item.avatarImageUrl} />
                 </div>
               </a>
             </CharacterBox>

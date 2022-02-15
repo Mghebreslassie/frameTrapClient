@@ -1,5 +1,4 @@
 import type { NextPage } from "next";
-import { useRouter } from "next/router";
 import CharacterInfo from "../components/CharacterInfo";
 import CharacterNavBar from "../components/CharacterNavBar";
 import FrameDataTable from "../components/FrameDataTable";
@@ -37,8 +36,6 @@ type IProps = {
   data: { newChar: Post };
 };
 const Character: NextPage<IProps> = ({ data }) => {
-  const router = useRouter();
-  const { id } = router.query;
   return (
     <BasicLayout>
       <CharacterNavBar />
@@ -56,34 +53,34 @@ const Character: NextPage<IProps> = ({ data }) => {
 export async function getStaticPaths(context: any) {
   // Call an external API endpoint to get posts
   // let uaString = context.req.headers["user-agent"];
+
   const res = await fetch(
-    "https://intense-tor-66882.herokuapp.com/character/getAllCharacters",
+    "https://frame-tool-gg.herokuapp.com/character/getAllCharacters",
     {
       method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-        "User-Agent": "*",
-      },
+      // headers: {
+      //   "Content-Type": "application/json",
+      //   Accept: "application/json",
+      //   "User-Agent": "*",
+      // },
     }
   );
 
-  const posts: { allChars: [Post] } = await res.json();
-  posts.allChars.forEach((i) => console.log(i.name));
+  const posts: { allChars: Post[] } = await res.json();
 
   // Get the paths we want to pre-render based on posts
   const paths = posts.allChars.map((post) => ({
     params: { id: post._id.toString() },
   }));
-
   // We'll pre-render only these paths at build time.
   // { fallback: false } means other routes should 404.
   return { paths, fallback: false };
 }
 
 export async function getStaticProps({ params }: any) {
+  console.log(params);
   const res = await fetch(
-    `https://intense-tor-66882.herokuapp.com/character/getCharacter/${params.id}`,
+    `https://frame-tool-gg.herokuapp.com/character/getCharacter/${params.id}`,
     {
       method: "GET",
       headers: {

@@ -38,9 +38,22 @@ const Home = () => {
             overflow: "hidden",
           }}
         >
-          <video autoPlay muted loop>
-            <source src="/assets/GGGiovanna.mp4" type="video/mp4" />
-          </video>
+          <a href="/6209bcc995cd20d27493d6df">
+            <h1
+              style={{
+                position: "absolute",
+                zIndex: "10",
+                top: "30%",
+                left: "13%",
+                fontSize: "5rem",
+              }}
+            >
+              Click video to enter
+            </h1>
+            <video autoPlay muted loop>
+              <source src="/assets/GGGiovanna.mp4" type="video/mp4" />
+            </video>
+          </a>
         </div>
         <div
           style={{

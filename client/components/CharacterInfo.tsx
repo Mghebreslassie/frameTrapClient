@@ -102,7 +102,7 @@ const CharacterInfo: NextPage<IProps> = ({
   return (
     <Container>
       <ImageContainer>
-        <Image src={portraitUrl} width={280} height={200} alt={name} />
+        <img src={portraitUrl} width={280} height={200} alt={name} />
       </ImageContainer>
       <CharacterBio>
         <Title>{name}</Title>

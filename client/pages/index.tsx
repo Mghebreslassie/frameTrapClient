@@ -39,24 +39,24 @@ const Home = () => {
             overflow: "hidden",
           }}
         >
-          <Link href="/6209bcc995cd20d27493d6df">
-            <a>
-              <h1
-                style={{
-                  position: "absolute",
-                  zIndex: "10",
-                  top: "30%",
-                  left: "13%",
-                  fontSize: "5rem",
-                }}
-              >
-                Click video to enter
-              </h1>
-              <video autoPlay muted loop>
-                <source src="/assets/GGGiovanna.mp4" type="video/mp4" />
-              </video>
-            </a>
-          </Link>
+          {/* <Link href="/6209bcc995cd20d27493d6df"> */}
+          {/* <a> */}
+          <h1
+            style={{
+              position: "absolute",
+              zIndex: "10",
+              top: "30%",
+              left: "13%",
+              fontSize: "5rem",
+            }}
+          >
+            Click video to enter
+          </h1>
+          <video autoPlay muted loop>
+            <source src="/assets/GGGiovanna.mp4" type="video/mp4" />
+          </video>
+          {/* </a> */}
+          {/* </Link> */}
         </div>
         <div
           style={{
